@@ -1,26 +1,27 @@
 package com.maids.test.entities.dto;
 
-import com.maids.test.entities.Article;
+import lombok.Builder;
 
 import java.util.List;
 
+@Builder
 public record UserResponseDto(
-        Integer ID,
-        String EMAIL,
-        List<Article> ART
+        Integer id,
+        String email,
+        List<ArticleResponseDto> articles
 ) {
     @Override
-    public Integer ID() {
-        return ID;
+    public Integer id() {
+        return id;
     }
 
     @Override
-    public String EMAIL() {
-        return EMAIL;
+    public String email() {
+        return email;
     }
 
     @Override
-    public List<Article> ART() {
-        return ART;
+    public List<ArticleResponseDto> articles() {
+        return articles;
     }
 }

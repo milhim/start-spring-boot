@@ -1,6 +1,5 @@
 package com.maids.test.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,14 +11,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "author")
-    @JsonManagedReference
-    private List<Article> userArticles;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Article> articles;
 
-    public User(Integer id, String email, List<Article> userArticles) {
+    public User(Integer id, String email, List<Article> articles) {
         this.id = id;
         this.email = email;
-        this.userArticles = userArticles;
+        this.articles = articles;
     }
 
     public User() {
@@ -29,23 +27,23 @@ public class User {
         return this.id;
     }
 
-    public String getEmail() {
-        return this.email;
-    }
-
-    public List<Article> getUserArticles() {
-        return this.userArticles;
-    }
-
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return this.email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setUserArticles(List<Article> userArticles) {
-        this.userArticles = userArticles;
+    public List<Article> getArticles() {
+        return this.articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }

@@ -1,14 +1,17 @@
 package com.maids.test.service;
 
 import com.maids.test.entities.User;
+import com.maids.test.entities.dto.UserRequestDto;
+import com.maids.test.entities.dto.UserResponseDto;
 
 import java.util.List;
 
 public interface IUserService {
-    List<User> getUsers();
+    List<UserResponseDto> getUsers();
 
-    User getUserById(Integer id);
+    UserResponseDto getUserById(Integer id);
 
     User addUser();
 
+    UserResponseDto createUser(UserRequestDto requestDto);
 }

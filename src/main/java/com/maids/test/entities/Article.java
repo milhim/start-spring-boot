@@ -1,6 +1,5 @@
 package com.maids.test.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,9 +9,8 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
-    @ManyToOne()
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User author;
 
     public Article(Integer id, String title, User author) {
@@ -28,20 +26,20 @@ public class Article {
         return this.id;
     }
 
-    public String getTitle() {
-        return this.title;
-    }
-
-    public User getAuthor() {
-        return this.author;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public String getTitle() {
+        return this.title;
+    }
+
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public User getAuthor() {
+        return this.author;
     }
 
     public void setAuthor(User author) {
