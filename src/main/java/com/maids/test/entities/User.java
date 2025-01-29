@@ -12,7 +12,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "author")
+    @OneToMany( mappedBy = "author")
     @JsonManagedReference
     private List<Article> userArticles;
 
@@ -24,6 +24,7 @@ public class User {
 
     public User() {
     }
+
 
     public Integer getId() {
         return this.id;
